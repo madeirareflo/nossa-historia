@@ -3,10 +3,13 @@
   A chave Pix abaixo é apenas um espaço reservado.
 */
 const WEDDING_CONFIG = {
-  pixKey: "SUA-CHAVE-PIX-AQUI",
-  recipient: "NOME DO DESTINATÁRIO",
-  // Adicione aqui os pagamentos confirmados. O site ordena do maior para o menor valor.
-  // Exemplo: { name: "Ana", amount: 300 }
+  coupleShortName: "Lara & Davi",
+  coupleFullName: "Lara Beringuy e Davi Leite",
+  weddingDate: "2027-03-13T00:00:00-03:00",
+  pixKey: "e7d77842-81c8-4d3b-9673-6a942f9925c5",
+  recipient: "DAVI LEITE RIBEIRO DANTAS",
+  // Mantenha os nomes do maior para o menor valor. Os valores não ficam públicos no site.
+  // Exemplo: ["Ana", "Bruno"]
   ranking: [],
 };
 
@@ -16,8 +19,24 @@ pixKeyElement.textContent = WEDDING_CONFIG.pixKey;
 recipientElements.forEach((element) => { element.textContent = WEDDING_CONFIG.recipient; });
 
 const rankingList = document.querySelector("#ranking-list");
-const rankingEntries = [...WEDDING_CONFIG.ranking].sort((a, b) => b.amount - a.amount);
-const formatCurrency = (value) => value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+const countdownIds = ["days", "hours", "minutes", "seconds"];
+const countdownTarget = new Date(WEDDING_CONFIG.weddingDate);
+const updateCountdown = () => {
+  const difference = Math.max(0, countdownTarget.getTime() - Date.now());
+  const values = [
+    Math.floor(difference / 86400000),
+    Math.floor((difference / 3600000) % 24),
+    Math.floor((difference / 60000) % 60),
+    Math.floor((difference / 1000) % 60),
+  ];
+  countdownIds.forEach((id, index) => {
+    document.querySelector(`#countdown-${id}`).textContent = String(values[index]).padStart(2, "0");
+  });
+};
+updateCountdown();
+window.setInterval(updateCountdown, 1000);
+
+const rankingEntries = [...WEDDING_CONFIG.ranking];
 
 if (rankingEntries.length === 0) {
   rankingList.innerHTML = `<div class="ranking-empty"><div><strong>O primeiro capítulo ainda está em branco.</strong><p>Quando chegar a primeira contribuição, o nome aparecerá aqui — sempre na ordem do maior valor.</p></div></div>`;
@@ -26,15 +45,12 @@ if (rankingEntries.length === 0) {
     const row = document.createElement("div");
     const position = document.createElement("span");
     const name = document.createElement("span");
-    const value = document.createElement("span");
     row.className = "ranking-row";
     position.className = "ranking-position";
     position.textContent = String(index + 1).padStart(2, "0");
     name.className = "ranking-name";
-    name.textContent = entry.name;
-    value.className = "ranking-value";
-    value.textContent = formatCurrency(entry.amount);
-    row.append(position, name, value);
+    name.textContent = entry;
+    row.append(position, name);
     rankingList.appendChild(row);
   });
 }
