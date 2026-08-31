@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#24332c" />
+    <meta name="description" content="Lista de presentes do nosso casamento — 13 de março de 2027." />
+    <title>Um presente para a nossa história</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="top-alert" role="alert">
+      <span class="alert-icon" aria-hidden="true">!</span>
+      <p><strong>Atenção antes de confirmar:</strong> confira sempre se o destinatário do Pix é <strong id="alert-recipient">NOME DO DESTINATÁRIO</strong>.</p>
+    </div>
+
+    <header class="site-header">
+      <a class="brand" href="#inicio" aria-label="Voltar ao início">nossa lista <span>✳</span></a>
+      <nav class="desktop-nav" aria-label="Navegação principal">
+        <a href="#presentes">Presentes</a>
+        <a href="#ranking">Ranking</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a class="nav-cta" href="#pix">Ver Pix <span aria-hidden="true">↘</span></a>
+      </nav>
+      <a class="mobile-cta" href="#pix" aria-label="Ir para as instruções de Pix">Pix <span aria-hidden="true">↘</span></a>
+    </header>
+
+    <main>
+      <section class="hero" id="inicio">
+        <div class="hero-copy">
+          <p class="eyebrow light">13 · 03 · 2027 <span></span> para sempre</p>
+          <h1>Um presente<br /><em>para a nossa</em><br />história.</h1>
+          <p class="hero-text">Estamos construindo o nosso primeiro lar. Se quiser fazer parte desse começo, escolha um presente simbólico abaixo.</p>
+          <a class="button button-light" href="#presentes">Escolher um presente <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="hero-stamp" aria-label="Data do casamento">
+          <span>Save</span>
+          <strong>the<br />date</strong>
+          <small>13.03.27</small>
+        </div>
+        <div class="hero-credit">um começo, muitos capítulos</div>
+      </section>
+
+      <section class="intro section-shell">
+        <div class="intro-mark" aria-hidden="true">✳</div>
+        <div>
+          <p class="eyebrow">A nossa lista</p>
+          <h2>Mais do que coisas,<br /><em>memórias.</em></h2>
+        </div>
+        <div class="intro-note">
+          <p>Optamos por receber os presentes via Pix para transformar cada contribuição em um pedacinho da nossa casa, das nossas viagens e dos dias que ainda vamos viver.</p>
+          <span class="handwritten">com carinho, os noivos</span>
+        </div>
+      </section>
+
+      <section class="gift-section" id="presentes">
+        <div class="section-shell">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Escolha o seu capítulo</p>
+              <h2>Presentes que <em>cabem</em><br />na nossa história</h2>
+            </div>
+            <p class="heading-side">Cada opção é uma forma simbólica de celebrar este novo começo com a gente.</p>
+          </div>
+
+          <div class="gift-grid">
+            <article class="gift-card featured">
+              <div class="gift-number">01</div>
+              <div class="gift-art art-home" aria-hidden="true"><span>⌂</span></div>
+              <div class="gift-content">
+                <p class="gift-category">para o nosso lar</p>
+                <h3>Primeiro café<br />na casa nova</h3>
+                <p class="gift-description">Aquele café demorado de domingo, na cozinha que ainda vamos montar.</p>
+                <div class="gift-footer"><strong>R$ 150</strong><button class="text-button gift-button" data-gift="Primeiro café na casa nova" data-value="150">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card muted-card">
+              <div class="gift-number">02</div>
+              <div class="gift-art art-trip" aria-hidden="true"><span>✈</span></div>
+              <div class="gift-content">
+                <p class="gift-category">para o nosso mundo</p>
+                <h3>Uma janela<br />para o mundo</h3>
+                <p class="gift-description">Uma ajuda para a viagem que vai inaugurar a nossa vida a dois.</p>
+                <div class="gift-footer"><strong>R$ 300</strong><button class="text-button gift-button" data-gift="Uma janela para o mundo" data-value="300">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card dark-card">
+              <div class="gift-number">03</div>
+              <div class="gift-art art-table" aria-hidden="true"><span>⌁</span></div>
+              <div class="gift-content">
+                <p class="gift-category">para os nossos dias</p>
+                <h3>Mesa cheia,<br />coração também</h3>
+                <p class="gift-description">Para montar uma mesa bonita e receber quem amamos em casa.</p>
+                <div class="gift-footer"><strong>R$ 500</strong><button class="text-button gift-button" data-gift="Mesa cheia, coração também" data-value="500">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card outline-card">
+              <div class="gift-number">04</div>
+              <div class="gift-art art-custom" aria-hidden="true"><span>+</span></div>
+              <div class="gift-content">
+                <p class="gift-category">do seu jeito</p>
+                <h3>Um presente<br />à sua escolha</h3>
+                <p class="gift-description">Qualquer valor será recebido com muito amor e fará parte da nossa história.</p>
+                <div class="gift-footer"><strong>Outro valor</strong><button class="text-button gift-button" data-gift="Um presente à sua escolha" data-value="0">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="ranking-section" id="ranking">
+        <div class="section-shell">
+          <div class="section-heading ranking-heading">
+            <div>
+              <p class="eyebrow">Uma celebração à parte</p>
+              <h2>Ranking de<br /><em>carinho.</em></h2>
+            </div>
+            <p class="heading-side">Uma forma divertida de acompanhar quem já ajudou a construir o nosso primeiro lar.</p>
+          </div>
+          <div class="ranking-board">
+            <div class="ranking-board-top"><span>posição</span><span>nome</span><span>contribuição</span></div>
+            <div id="ranking-list" aria-live="polite"></div>
+            <p class="ranking-note">Atualizado manualmente pelos noivos · cada contribuição é recebida com muito carinho.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="how-section section-shell" id="como-funciona">
+        <div class="how-intro">
+          <p class="eyebrow">É simples assim</p>
+          <h2>Três passos<br /><em>cheios de carinho.</em></h2>
+          <p>Você escolhe um presente, faz o Pix e pronto: já está presente na nossa história.</p>
+        </div>
+        <div class="steps">
+          <div class="step"><span>01</span><div><h3>Escolha um presente</h3><p>Encontre uma opção que combine com você e com a nossa história.</p></div></div>
+          <div class="step"><span>02</span><div><h3>Faça o Pix</h3><p>Copie a chave Pix na área de pagamento e confirme no seu banco.</p></div></div>
+          <div class="step"><span>03</span><div><h3>Envie seu carinho</h3><p>Se quiser, conte para a gente qual presente você escolheu.</p></div></div>
+        </div>
+      </section>
+
+      <section class="pix-section" id="pix">
+        <div class="pix-panel section-shell">
+          <div class="pix-heading">
+            <div class="pix-symbol" aria-hidden="true">₿</div>
+            <div><p class="eyebrow light">Pagamento seguro e direto</p><h2>Seu presente<br /><em>chega por Pix.</em></h2></div>
+          </div>
+          <div class="pix-details">
+            <p>Depois de escolher um presente, use os dados abaixo para concluir a contribuição.</p>
+            <div class="recipient-row"><span>destinatário</span><strong id="pix-recipient">NOME DO DESTINATÁRIO</strong></div>
+            <div class="pix-key-box"><span>chave Pix</span><strong id="pix-key">SUA-CHAVE-PIX-AQUI</strong><button class="copy-button" id="copy-key" type="button">copiar <span aria-hidden="true">⧉</span></button></div>
+            <div class="pix-warning"><span aria-hidden="true">!</span><p>Antes de confirmar, verifique se o nome do destinatário é exatamente o mesmo que aparece acima.</p></div>
+            <p class="pix-placeholder-note">A chave exibida é um espaço reservado. Substitua-a pela chave real em <code>script.js</code> antes de publicar.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing section-shell">
+        <p class="eyebrow">Até lá</p>
+        <h2>Mal podemos esperar<br />para celebrar <em>com você.</em></h2>
+        <div class="closing-line"><span></span><span>13.03.2027</span><span></span></div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><span>nossa lista <i>✳</i></span><span>feito com amor para um dia inesquecível</span><span>13 · 03 · 2027</span></footer>
+
+    <dialog class="gift-dialog" id="gift-dialog">
+      <button class="close-dialog" id="close-dialog" type="button" aria-label="Fechar">×</button>
+      <p class="eyebrow">seu presente escolhido</p>
+      <h2 id="dialog-title">Primeiro café na casa nova</h2>
+      <p class="dialog-intro">Que carinho receber você nesse capítulo. Defina um valor, se quiser, e siga para o Pix.</p>
+      <label for="custom-value">valor da contribuição</label>
+      <div class="value-input"><span>R$</span><input id="custom-value" type="number" min="1" step="1" inputmode="decimal" value="150" /></div>
+      <div class="dialog-actions"><button class="button button-dark" id="go-to-pix" type="button">Ver dados do Pix <span aria-hidden="true">↘</span></button></div>
+      <p class="dialog-footnote">Você também pode escolher outro valor diretamente na área de Pix.</p>
+    </dialog>
+    <div class="dialog-backdrop" id="dialog-backdrop"></div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite">Chave Pix copiada.</div>
+    <script src="script.js"></script>
+  </body>
+</html>
