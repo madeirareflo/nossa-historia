@@ -60,6 +60,29 @@ const dialogTitle = document.querySelector("#dialog-title");
 const customValue = document.querySelector("#custom-value");
 const toast = document.querySelector("#toast");
 
+const filterButtons = document.querySelectorAll(".filter-btn");
+const giftCards = document.querySelectorAll(".gift-card");
+
+filterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const filter = button.dataset.filter;
+    filterButtons.forEach((b) => {
+      b.classList.remove("active");
+      b.setAttribute("aria-selected", "false");
+    });
+    button.classList.add("active");
+    button.setAttribute("aria-selected", "true");
+
+    giftCards.forEach((card) => {
+      if (filter === "all" || card.dataset.category === filter) {
+        card.classList.remove("hidden-card");
+      } else {
+        card.classList.add("hidden-card");
+      }
+    });
+  });
+});
+
 document.querySelectorAll(".gift-button").forEach((button) => {
   button.addEventListener("click", () => {
     dialogTitle.textContent = button.dataset.gift;

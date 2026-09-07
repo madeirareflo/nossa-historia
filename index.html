@@ -82,10 +82,19 @@
             <p class="heading-side">Cada opção é uma forma simbólica de celebrar este novo começo com a gente.</p>
           </div>
 
+                    <div class="gift-filters" role="tablist" aria-label="Filtrar presentes por categoria">
+            <button class="filter-btn active" type="button" role="tab" aria-selected="true" data-filter="all">✨ Todos <span class="filter-count">60</span></button>
+            <button class="filter-btn" type="button" role="tab" aria-selected="false" data-filter="casa">🏡 Para a Casa <span class="filter-count">18</span></button>
+            <button class="filter-btn" type="button" role="tab" aria-selected="false" data-filter="viagem">✈️ Lua de Mel <span class="filter-count">12</span></button>
+            <button class="filter-btn" type="button" role="tab" aria-selected="false" data-filter="pokemon">⚡ Pokémon & TCG <span class="filter-count">10</span></button>
+            <button class="filter-btn" type="button" role="tab" aria-selected="false" data-filter="brincadeiras">😂 Brincadeiras <span class="filter-count">15</span></button>
+            <button class="filter-btn" type="button" role="tab" aria-selected="false" data-filter="metas">🏆 Grandes Metas <span class="filter-count">5</span></button>
+          </div>
+
           <div class="gift-grid">
-            <article class="gift-card featured">
+            <article class="gift-card featured" data-category="casa">
               <div class="gift-number">01</div>
-              <div class="gift-art gift-photo"><img src="assets/products/jogo-talheres.jpg" alt="Jogo de talheres de aço inox" /></div>
+              <div class="gift-art gift-photo"><img src="assets/products/jogo-talheres.jpg" alt="Jogo de talheres de aço inox" loading="lazy" /></div>
               <div class="gift-content">
                 <p class="gift-category">para a nossa mesa</p>
                 <h3>Faqueiro<br />para a casa</h3>
@@ -94,9 +103,9 @@
               </div>
             </article>
 
-            <article class="gift-card muted-card">
+            <article class="gift-card muted-card" data-category="casa">
               <div class="gift-number">02</div>
-              <div class="gift-art gift-photo"><img src="assets/products/conjunto-pratos.jpg" alt="Conjunto de pratos pretos" /></div>
+              <div class="gift-art gift-photo"><img src="assets/products/conjunto-pratos.jpg" alt="Conjunto de pratos pretos" loading="lazy" /></div>
               <div class="gift-content">
                 <p class="gift-category">para a nossa mesa</p>
                 <h3>Pratos para<br />receber</h3>
@@ -105,9 +114,9 @@
               </div>
             </article>
 
-            <article class="gift-card dark-card">
+            <article class="gift-card dark-card" data-category="casa">
               <div class="gift-number">03</div>
-              <div class="gift-art gift-photo"><img src="assets/products/aparelho-fondue.jpg" alt="Aparelho de fondue preto" /></div>
+              <div class="gift-art gift-photo"><img src="assets/products/aparelho-fondue.jpg" alt="Aparelho de fondue preto" loading="lazy" /></div>
               <div class="gift-content">
                 <p class="gift-category">para os nossos encontros</p>
                 <h3>Fondue<br />a dois</h3>
@@ -116,9 +125,9 @@
               </div>
             </article>
 
-            <article class="gift-card outline-card">
+            <article class="gift-card outline-card" data-category="casa">
               <div class="gift-number">04</div>
-              <div class="gift-art gift-photo"><img src="assets/products/kit-tabua-queijos.jpg" alt="Kit tábua de queijos e frios" /></div>
+              <div class="gift-art gift-photo"><img src="assets/products/kit-tabua-queijos.jpg" alt="Kit tábua de queijos e frios" loading="lazy" /></div>
               <div class="gift-content">
                 <p class="gift-category">para os nossos domingos</p>
                 <h3>Tábua de<br />queijos</h3>
@@ -127,9 +136,9 @@
               </div>
             </article>
 
-            <article class="gift-card muted-card">
+            <article class="gift-card featured" data-category="casa">
               <div class="gift-number">05</div>
-              <div class="gift-art gift-photo"><img src="assets/products/jogo-toalhas.jpg" alt="Jogo de toalhas de banho" /></div>
+              <div class="gift-art gift-photo"><img src="assets/products/jogo-toalhas.jpg" alt="Jogo de toalhas de banho" loading="lazy" /></div>
               <div class="gift-content">
                 <p class="gift-category">para o nosso lar</p>
                 <h3>Toalhas<br />macias</h3>
@@ -138,9 +147,9 @@
               </div>
             </article>
 
-            <article class="gift-card dark-card">
+            <article class="gift-card muted-card" data-category="casa">
               <div class="gift-number">06</div>
-              <div class="gift-art gift-photo"><img src="assets/products/chapa-grelhar.jpg" alt="Chapa de pedra para grelhar carne" /></div>
+              <div class="gift-art gift-photo"><img src="assets/products/chapa-grelhar.jpg" alt="Chapa de pedra para grelhar carne" loading="lazy" /></div>
               <div class="gift-content">
                 <p class="gift-category">para os nossos sabores</p>
                 <h3>Chapa para<br />grelhar</h3>
@@ -149,42 +158,163 @@
               </div>
             </article>
 
-            <article class="gift-card outline-card">
+            <article class="gift-card dark-card" data-category="casa">
               <div class="gift-number">07</div>
-              <div class="gift-art gift-photo"><img src="assets/products/malas-lua-de-mel.png" alt="Malas para a lua de mel" /></div>
-              <div class="gift-content">
-                <p class="gift-category">para a nossa viagem</p>
-                <h3>Malas para<br />a lua de mel</h3>
-                <p class="gift-description">Para embarcar na nossa primeira grande viagem juntos e colecionar lembranças pelo mundo.</p>
-                <div class="gift-footer"><strong>R$ 400,00</strong><button class="text-button gift-button" data-gift="Malas para a lua de mel" data-value="400.00">escolher <span aria-hidden="true">↗</span></button></div>
-              </div>
-            </article>
-
-            <article class="gift-card featured">
-              <div class="gift-number">08</div>
-              <div class="gift-art gift-photo"><img src="assets/products/kit-churrasco.png" alt="Kit churrasco com facas e estojo de couro" /></div>
+              <div class="gift-art gift-photo"><img src="assets/products/kit-churrasco.png" alt="Kit churrasco com facas e estojo de couro" loading="lazy" /></div>
               <div class="gift-content">
                 <p class="gift-category">para os nossos fins de semana</p>
                 <h3>Kit para<br />churrasco</h3>
-                <p class="gift-description">Facas e garfos especiais para reunir quem a gente ama em volta da mesa e da brasa.</p>
+                <p class="gift-description">Facas e garfos especiais para reunir quem a gente ama em volta da brasa.</p>
                 <div class="gift-footer"><strong>R$ 399,00</strong><button class="text-button gift-button" data-gift="Kit para churrasco" data-value="399.00">escolher <span aria-hidden="true">↗</span></button></div>
               </div>
             </article>
 
-            <article class="gift-card muted-card">
-              <div class="gift-number">09</div>
-              <div class="gift-art gift-photo"><img src="assets/products/conjunto-tacas.png" alt="Conjunto de taças de vinho para brindar" /></div>
+            <article class="gift-card outline-card" data-category="casa">
+              <div class="gift-number">08</div>
+              <div class="gift-art gift-photo"><img src="assets/products/jogo-lencois.png" alt="Jogo de cama e lençóis 400 fios" loading="lazy" /></div>
               <div class="gift-content">
-                <p class="gift-category">para as nossas celebrações</p>
+                <p class="gift-category">para o nosso lar</p>
+                <h3>Jogo de cama<br />400 fios</h3>
+                <p class="gift-description">Lençóis macios e confortáveis para transformar o quarto em refúgio acolhedor.</p>
+                <div class="gift-footer"><strong>R$ 280,00</strong><button class="text-button gift-button" data-gift="Jogo de cama 400 fios" data-value="280.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card featured" data-category="casa">
+              <div class="gift-number">09</div>
+              <div class="gift-art gift-photo"><img src="assets/products/airfryer.png" alt="Fritadeira elétrica sem óleo" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">para a nossa rotina</p>
+                <h3>Airfryer<br />prática</h3>
+                <p class="gift-description">Para a nossa rotina com batata crocante, petiscos e receitas rápidas sem óleo.</p>
+                <div class="gift-footer"><strong>R$ 350,00</strong><button class="text-button gift-button" data-gift="Airfryer prática" data-value="350.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card muted-card" data-category="casa">
+              <div class="gift-number">10</div>
+              <div class="gift-art gift-photo"><img src="assets/products/cafeteira-nespresso.png" alt="Cafeteira de café expresso" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">para começar o dia</p>
+                <h3>Cafeteira para<br />as manhãs</h3>
+                <p class="gift-description">Aquele café expresso perfumado para despertar com calma a dois.</p>
+                <div class="gift-footer"><strong>R$ 320,00</strong><button class="text-button gift-button" data-gift="Cafeteira para as manhãs" data-value="320.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card dark-card" data-category="casa">
+              <div class="gift-number">11</div>
+              <div class="gift-art gift-photo"><img src="assets/products/adega-climatizada.png" alt="Adega climatizada para vinhos" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">para a nossa adega</p>
+                <h3>Adega<br />climatizada</h3>
+                <p class="gift-description">Para armazenar nossos vinhos preferidos na temperatura perfeita de brinde.</p>
+                <div class="gift-footer"><strong>R$ 650,00</strong><button class="text-button gift-button" data-gift="Adega climatizada" data-value="650.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card outline-card" data-category="casa">
+              <div class="gift-number">12</div>
+              <div class="gift-art gift-photo"><img src="assets/products/churrasqueira-eletrica.png" alt="Churrasqueira elétrica portátil" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">para os fins de semana</p>
+                <h3>Churrasqueira<br />elétrica</h3>
+                <p class="gift-description">Churrasco prático na varanda sem fumaça nos almoços de domingo.</p>
+                <div class="gift-footer"><strong>R$ 320,00</strong><button class="text-button gift-button" data-gift="Churrasqueira elétrica" data-value="320.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card featured" data-category="casa">
+              <div class="gift-number">13</div>
+              <div class="gift-art gift-photo"><img src="assets/products/liquidificador.png" alt="Liquidificador moderno" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">para a cozinha nova</p>
+                <h3>Liquidificador<br />potente</h3>
+                <p class="gift-description">Para sucos frescos de manhã, vitaminas, molhos e massas de bolo caseiro.</p>
+                <div class="gift-footer"><strong>R$ 180,00</strong><button class="text-button gift-button" data-gift="Liquidificador potente" data-value="180.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card muted-card" data-category="casa">
+              <div class="gift-number">14</div>
+              <div class="gift-art gift-photo"><img src="assets/products/batedeira-planetaria.png" alt="Batedeira planetária de cozinha" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">para os nossos doces</p>
+                <h3>Batedeira<br />planetária</h3>
+                <p class="gift-description">Para arriscar receitas de sobremesas, pães artesanais e bolos aos sábados.</p>
+                <div class="gift-footer"><strong>R$ 390,00</strong><button class="text-button gift-button" data-gift="Batedeira planetária" data-value="390.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card dark-card" data-category="casa">
+              <div class="gift-number">15</div>
+              <div class="gift-art gift-photo"><img src="assets/products/micro-ondas.png" alt="Forno micro-ondas espelhado" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">para a nossa rotina</p>
+                <h3>Micro-ondas<br />moderno</h3>
+                <p class="gift-description">Para esquentar a pipoca na noite de filme ou o jantar com total praticidade.</p>
+                <div class="gift-footer"><strong>R$ 420,00</strong><button class="text-button gift-button" data-gift="Micro-ondas moderno" data-value="420.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card outline-card" data-category="casa">
+              <div class="gift-number">16</div>
+              <div class="gift-art gift-photo"><img src="assets/products/jogo-panelas.png" alt="Conjunto de panelas antiaderentes" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">para cozinhar juntos</p>
+                <h3>Conjunto de<br />panelas</h3>
+                <p class="gift-description">Panelas antiaderentes para cozinhar juntos com amor e sem grudar nada.</p>
+                <div class="gift-footer"><strong>R$ 280,00</strong><button class="text-button gift-button" data-gift="Conjunto de panelas" data-value="280.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card featured" data-category="casa">
+              <div class="gift-number">17</div>
+              <div class="gift-art gift-photo"><img src="assets/products/panela-eletrica.png" alt="Panela elétrica multifuncional" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">para a nossa mesa</p>
+                <h3>Panela elétrica<br />multifunções</h3>
+                <p class="gift-description">Arroz soltinho e refeições no ponto ideal com o toque de um botão.</p>
+                <div class="gift-footer"><strong>R$ 190,00</strong><button class="text-button gift-button" data-gift="Panela elétrica multifunções" data-value="190.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card muted-card" data-category="casa">
+              <div class="gift-number">18</div>
+              <div class="gift-art gift-photo"><img src="assets/products/sanduicheira.png" alt="Sanduicheira e grill elétrico" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">para lanches rápidos</p>
+                <h3>Sanduicheira<br />& grill</h3>
+                <p class="gift-description">Para o misto-quente perfeito e lanchinhos rápidos nas noites preguiçosas.</p>
+                <div class="gift-footer"><strong>R$ 130,00</strong><button class="text-button gift-button" data-gift="Sanduicheira & grill" data-value="130.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card dark-card" data-category="viagem">
+              <div class="gift-number">19</div>
+              <div class="gift-art gift-photo"><img src="assets/products/malas-lua-de-mel.png" alt="Malas de viagem para lua de mel" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">para a nossa viagem</p>
+                <h3>Malas para a<br />lua de mel</h3>
+                <p class="gift-description">Para embarcar na nossa primeira grande viagem e colecionar lembranças pelo mundo.</p>
+                <div class="gift-footer"><strong>R$ 400,00</strong><button class="text-button gift-button" data-gift="Malas para a lua de mel" data-value="400.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card outline-card" data-category="viagem">
+              <div class="gift-number">20</div>
+              <div class="gift-art gift-photo"><img src="assets/products/conjunto-tacas.png" alt="Conjunto de taças de vinho" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">para as celebrações</p>
                 <h3>Taças para<br />brindar</h3>
                 <p class="gift-description">Um conjunto elegante de taças para celebrar cada nova conquista e brinde a dois.</p>
                 <div class="gift-footer"><strong>R$ 300,00</strong><button class="text-button gift-button" data-gift="Taças para brindar" data-value="300.00">escolher <span aria-hidden="true">↗</span></button></div>
               </div>
             </article>
 
-            <article class="gift-card dark-card">
-              <div class="gift-number">10</div>
-              <div class="gift-art gift-photo"><img src="assets/products/jantar-romantico.png" alt="Jantar romântico a dois para o casal" /></div>
+            <article class="gift-card featured" data-category="viagem">
+              <div class="gift-number">21</div>
+              <div class="gift-art gift-photo"><img src="assets/products/jantar-romantico.png" alt="Jantar romântico a dois para o casal" loading="lazy" /></div>
               <div class="gift-content">
                 <p class="gift-category">para os nossos encontros</p>
                 <h3>Jantar romântico<br />a dois</h3>
@@ -193,25 +323,432 @@
               </div>
             </article>
 
-            <article class="gift-card outline-card">
-              <div class="gift-number">11</div>
-              <div class="gift-art gift-photo"><img src="assets/products/diaria-hotel.png" alt="Diária especial na lua de mel com vista panorâmica" /></div>
+            <article class="gift-card muted-card" data-category="viagem">
+              <div class="gift-number">22</div>
+              <div class="gift-art gift-photo"><img src="assets/products/diaria-hotel.png" alt="Diária de hotel na serra" loading="lazy" /></div>
               <div class="gift-content">
                 <p class="gift-category">para a nossa viagem</p>
                 <h3>Diária na<br />lua de mel</h3>
-                <p class="gift-description">Uma noite inesquecível com vista para a serra para descansar e celebrar o início do casamento.</p>
+                <p class="gift-description">Uma noite inesquecível com vista para a serra para descansar e celebrar o início.</p>
                 <div class="gift-footer"><strong>R$ 480,00</strong><button class="text-button gift-button" data-gift="Diária na lua de mel" data-value="480.00">escolher <span aria-hidden="true">↗</span></button></div>
               </div>
             </article>
 
-            <article class="gift-card featured">
-              <div class="gift-number">12</div>
-              <div class="gift-art gift-photo"><img src="assets/products/jogo-lencois.png" alt="Jogo de cama e lençóis 400 fios" /></div>
+            <article class="gift-card dark-card" data-category="viagem">
+              <div class="gift-number">23</div>
+              <div class="gift-art gift-photo"><img src="assets/products/spa-para-o-casal.png" alt="Dia de spa e massagem para o casal" loading="lazy" /></div>
               <div class="gift-content">
-                <p class="gift-category">para o nosso lar</p>
-                <h3>Jogo de cama<br />400 fios</h3>
-                <p class="gift-description">Lençóis macios e confortáveis para transformar o nosso quarto em um refúgio acolhedor.</p>
-                <div class="gift-footer"><strong>R$ 280,00</strong><button class="text-button gift-button" data-gift="Jogo de cama 400 fios" data-value="280.00">escolher <span aria-hidden="true">↗</span></button></div>
+                <p class="gift-category">para relaxar a dois</p>
+                <h3>Dia de Spa<br />para o casal</h3>
+                <p class="gift-description">Massagem relaxante, óleos aromáticos e banho revigorante pós-casamento.</p>
+                <div class="gift-footer"><strong>R$ 420,00</strong><button class="text-button gift-button" data-gift="Dia de Spa para o casal" data-value="420.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card outline-card" data-category="viagem">
+              <div class="gift-number">24</div>
+              <div class="gift-art gift-photo"><img src="assets/products/degustacao-de-vinhos.png" alt="Degustação de vinhos a dois" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">para os nossos brindes</p>
+                <h3>Degustação de<br />vinhos finos</h3>
+                <p class="gift-description">Visita guiada a vinícolas para conhecer safras raras e aprender sobre harmonizações.</p>
+                <div class="gift-footer"><strong>R$ 260,00</strong><button class="text-button gift-button" data-gift="Degustação de vinhos finos" data-value="260.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card featured" data-category="viagem">
+              <div class="gift-number">25</div>
+              <div class="gift-art gift-photo"><img src="assets/products/passeio-de-lancha.png" alt="Passeio de lancha romântico" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">para as nossas aventuras</p>
+                <h3>Passeio de<br />lancha no mar</h3>
+                <p class="gift-description">Um dia ensolarado no mar com brisa, mergulho refrescante e paisagens únicas.</p>
+                <div class="gift-footer"><strong>R$ 350,00</strong><button class="text-button gift-button" data-gift="Passeio de lancha no mar" data-value="350.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card muted-card" data-category="viagem">
+              <div class="gift-number">26</div>
+              <div class="gift-art gift-photo"><img src="assets/products/passeio-helicoptero.png" alt="Passeio de helicóptero panorâmico" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">para ver do alto</p>
+                <h3>Passeio de<br />helicóptero</h3>
+                <p class="gift-description">Um sobrevoo inesquecível vendo os cartões-postais da cidade de outro ângulo.</p>
+                <div class="gift-footer"><strong>R$ 550,00</strong><button class="text-button gift-button" data-gift="Passeio de helicóptero" data-value="550.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card dark-card" data-category="viagem">
+              <div class="gift-number">27</div>
+              <div class="gift-art gift-photo"><img src="assets/products/kit-caipirinha.png" alt="Kit caipirinha e coqueteleira" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">para dias ensolarados</p>
+                <h3>Kit caipirinha<br />& coquetéis</h3>
+                <p class="gift-description">Para preparar drinks tropicais à beira da piscina e receber com animação.</p>
+                <div class="gift-footer"><strong>R$ 120,00</strong><button class="text-button gift-button" data-gift="Kit caipirinha & coquetéis" data-value="120.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card outline-card" data-category="viagem">
+              <div class="gift-number">28</div>
+              <div class="gift-art gift-photo"><img src="assets/products/ar-condicionado.png" alt="Ar-condicionado split para o quarto" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">para o conforto</p>
+                <h3>Ar-condicionado<br />refrescante</h3>
+                <p class="gift-description">Para manter o quarto sempre geladinho e confortável nos dias quentes de verão.</p>
+                <div class="gift-footer"><strong>R$ 800,00</strong><button class="text-button gift-button" data-gift="Ar-condicionado refrescante" data-value="800.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card featured" data-category="viagem">
+              <div class="gift-number">29</div>
+              <div class="gift-art gift-photo"><img src="assets/products/edredom.png" alt="Edredom fofinho de casal" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">para noites frias</p>
+                <h3>Edredom ultra<br />macio</h3>
+                <p class="gift-description">Edredom encorpado e macio para maratonar filmes no frio enroladinhos.</p>
+                <div class="gift-footer"><strong>R$ 240,00</strong><button class="text-button gift-button" data-gift="Edredom ultra macio" data-value="240.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card muted-card" data-category="viagem">
+              <div class="gift-number">30</div>
+              <div class="gift-art gift-photo"><img src="assets/products/passagem-aerea.png" alt="Passagem aérea para lua de mel" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">para voar alto</p>
+                <h3>Passagem aérea<br />do casal</h3>
+                <p class="gift-description">Nossas asas para a viagem mais esperada do ano rumo a dias inesquecíveis.</p>
+                <div class="gift-footer"><strong>R$ 1.000,00</strong><button class="text-button gift-button" data-gift="Passagem aérea do casal" data-value="1000.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card dark-card" data-category="pokemon">
+              <div class="gift-number">31</div>
+              <div class="gift-art gift-photo"><img src="assets/products/pokemon-ginasio.jpg" alt="Ginásio Pokémon na casa nova" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">mundo pokémon</p>
+                <h3>Construir um<br />Ginásio Pokémon</h3>
+                <p class="gift-description">Para treinar a paciência e garantir todas as insígnias da vida a dois.</p>
+                <div class="gift-footer"><strong>R$ 350,00</strong><button class="text-button gift-button" data-gift="Construir um Ginásio Pokémon" data-value="350.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card outline-card" data-category="pokemon">
+              <div class="gift-number">32</div>
+              <div class="gift-art gift-photo"><img src="assets/products/pokemon-paldea.jpg" alt="Casa aconchegante na região de Paldea" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">mundo pokémon</p>
+                <h3>Entrada para a<br />casa em Paldea</h3>
+                <p class="gift-description">Nosso cantinho ensolarado entre campos de lavanda, Lechonk e Smoliv.</p>
+                <div class="gift-footer"><strong>R$ 500,00</strong><button class="text-button gift-button" data-gift="Entrada para a casa em Paldea" data-value="500.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card featured" data-category="pokemon">
+              <div class="gift-number">33</div>
+              <div class="gift-art gift-photo"><img src="assets/products/pokemon-kanto.jpg" alt="Férias nostálgicas na região de Kanto" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">mundo pokémon</p>
+                <h3>Férias em Kanto<br />para o casal</h3>
+                <p class="gift-description">Onde tudo começou: passear pela Rota 2, Pallet Town e desafiar a Liga a dois.</p>
+                <div class="gift-footer"><strong>R$ 400,00</strong><button class="text-button gift-button" data-gift="Férias em Kanto para o casal" data-value="400.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card muted-card" data-category="pokemon">
+              <div class="gift-number">34</div>
+              <div class="gift-art gift-photo"><img src="assets/products/pokemon-booster.jpg" alt="Booster box de cartas Pokémon TCG" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">mundo pokémon</p>
+                <h3>Booster Box TCG<br />para abrir a dois</h3>
+                <p class="gift-description">36 pacotinhos para torcer por cartas ultra raras e montar nossos decks.</p>
+                <div class="gift-footer"><strong>R$ 380,00</strong><button class="text-button gift-button" data-gift="Booster Box TCG para abrir a dois" data-value="380.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card dark-card" data-category="pokemon">
+              <div class="gift-number">35</div>
+              <div class="gift-art gift-photo"><img src="assets/products/pokemon-masterball.jpg" alt="Master Ball com anéis de casamento" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">mundo pokémon</p>
+                <h3>Master Ball para<br />garantir o 'Sim'</h3>
+                <p class="gift-description">Taxa de captura de 100%: ela não teve como escapar desse amor lendário.</p>
+                <div class="gift-footer"><strong>R$ 150,00</strong><button class="text-button gift-button" data-gift="Master Ball para garantir o 'Sim'" data-value="150.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card outline-card" data-category="pokemon">
+              <div class="gift-number">36</div>
+              <div class="gift-art gift-photo"><img src="assets/products/pokemon-charizard.jpg" alt="Carta Charizard 1ª Edição em slab acrílico" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">mundo pokémon</p>
+                <h3>Charizard Shiny<br />1ª Edição</h3>
+                <p class="gift-description">Carta rara PSA 10 Gem Mint para blindar e valorizar o patrimônio da família.</p>
+                <div class="gift-footer"><strong>R$ 1.000,00</strong><button class="text-button gift-button" data-gift="Charizard Shiny 1ª Edição" data-value="1000.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card featured" data-category="pokemon">
+              <div class="gift-number">37</div>
+              <div class="gift-art gift-photo"><img src="assets/products/pokemon-alola.jpg" alt="Praia tropical na região de Alola" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">mundo pokémon</p>
+                <h3>Lua de mel nas<br />praias de Alola</h3>
+                <p class="gift-description">Passeio de Lapras no mar azul, água de coco fresca e brisa tropical a dois.</p>
+                <div class="gift-footer"><strong>R$ 450,00</strong><button class="text-button gift-button" data-gift="Lua de mel nas praias de Alola" data-value="450.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card muted-card" data-category="pokemon">
+              <div class="gift-number">38</div>
+              <div class="gift-art gift-photo"><img src="assets/products/pokemon-pikachu.jpg" alt="Pikachu de pelúcia gigante na cama de casal" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">mundo pokémon</p>
+                <h3>Pikachu gigante<br />para a cama</h3>
+                <p class="gift-description">O terceiro morador oficial do quarto que vai disputar o travesseiro.</p>
+                <div class="gift-footer"><strong>R$ 180,00</strong><button class="text-button gift-button" data-gift="Pikachu gigante para a cama" data-value="180.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card dark-card" data-category="pokemon">
+              <div class="gift-number">39</div>
+              <div class="gift-art gift-photo"><img src="assets/products/pokemon-playmat.jpg" alt="Kit playmat Pokémon TCG para casal" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">mundo pokémon</p>
+                <h3>Kit Treinador<br />Pokémon do casal</h3>
+                <p class="gift-description">Playmat duplo, sleeves protetores e dados para duelos épicos na mesa de centro.</p>
+                <div class="gift-footer"><strong>R$ 220,00</strong><button class="text-button gift-button" data-gift="Kit Treinador Pokémon do casal" data-value="220.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card outline-card" data-category="pokemon">
+              <div class="gift-number">40</div>
+              <div class="gift-art gift-photo"><img src="assets/products/pokemon-trainer.jpg" alt="Diploma oficial de Mestre Pokémon" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">mundo pokémon</p>
+                <h3>Curso de Mestre<br />Pokémon pro noivo</h3>
+                <p class="gift-description">Diploma oficial para aprender de uma vez a tabela de fraquezas e tipos.</p>
+                <div class="gift-footer"><strong>R$ 90,00</strong><button class="text-button gift-button" data-gift="Curso de Mestre Pokémon pro noivo" data-value="90.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card featured" data-category="brincadeiras">
+              <div class="gift-number">41</div>
+              <div class="gift-art gift-photo"><img src="assets/products/voucher-detergente.png" alt="Voucher detergente para a noiva não reclamar" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">brincadeiras & vida a dois</p>
+                <h3>Detergente pra noiva<br />não reclamar</h3>
+                <p class="gift-description">Pia limpa, louça escorrida e garantia eterna de paz no ambiente doméstico.</p>
+                <div class="gift-footer"><strong>R$ 40,00</strong><button class="text-button gift-button" data-gift="Detergente pra noiva não reclamar" data-value="40.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card muted-card" data-category="brincadeiras">
+              <div class="gift-number">42</div>
+              <div class="gift-art gift-photo"><img src="assets/products/voucher-pedagio.png" alt="Voucher pedágio da lua de mel" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">brincadeiras & vida a dois</p>
+                <h3>Pedágio da<br />lua de mel</h3>
+                <p class="gift-description">Moedinhas salvas para passar direto na cancela sem fila na estrada.</p>
+                <div class="gift-footer"><strong>R$ 50,00</strong><button class="text-button gift-button" data-gift="Pedágio da lua de mel" data-value="50.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card dark-card" data-category="brincadeiras">
+              <div class="gift-number">43</div>
+              <div class="gift-art gift-photo"><img src="assets/products/voucher-kit-sem-grana.png" alt="Voucher kit não temos dinheiro" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">brincadeiras & vida a dois</p>
+                <h3>Kit oficial<br />'Não temos dinheiro'</h3>
+                <p class="gift-description">Para abrir quando a fatura do casamento chegar e bater o leve desespero.</p>
+                <div class="gift-footer"><strong>R$ 50,00</strong><button class="text-button gift-button" data-gift="Kit oficial 'Não temos dinheiro'" data-value="50.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card outline-card" data-category="brincadeiras">
+              <div class="gift-number">44</div>
+              <div class="gift-art gift-photo"><img src="assets/products/voucher-multa-atraso.png" alt="Voucher multa por chegar atrasado" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">brincadeiras & vida a dois</p>
+                <h3>Multa por chegar<br />atrasado</h3>
+                <p class="gift-description">Taxa simbólica e educativa para quem demorar mais de 15 minutos além do combinado.</p>
+                <div class="gift-footer"><strong>R$ 50,00</strong><button class="text-button gift-button" data-gift="Multa por chegar atrasado" data-value="50.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card featured" data-category="brincadeiras">
+              <div class="gift-number">45</div>
+              <div class="gift-art gift-photo"><img src="assets/products/voucher-kit-sobrevivencia.png" alt="Voucher kit sobrevivência do marido" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">brincadeiras & vida a dois</p>
+                <h3>Kit sobrevivência<br />do marido</h3>
+                <p class="gift-description">Manual básico de respostas automáticas como 'você está linda' em menos de 2s.</p>
+                <div class="gift-footer"><strong>R$ 80,00</strong><button class="text-button gift-button" data-gift="Kit sobrevivência do marido" data-value="80.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card muted-card" data-category="brincadeiras">
+              <div class="gift-number">46</div>
+              <div class="gift-art gift-photo"><img src="assets/products/voucher-lavar-louca.png" alt="Voucher vale uma semana sem lavar louça" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">brincadeiras & vida a dois</p>
+                <h3>Vale 1 semana sem<br />lavar louça</h3>
+                <p class="gift-description">O bilhete dourado mais cobiçado, disputado e valioso da nossa casa nova.</p>
+                <div class="gift-footer"><strong>R$ 100,00</strong><button class="text-button gift-button" data-gift="Vale 1 semana sem lavar louça" data-value="100.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card dark-card" data-category="brincadeiras">
+              <div class="gift-number">47</div>
+              <div class="gift-art gift-photo"><img src="assets/products/voucher-taxa-sem-discussao.png" alt="Voucher taxa para não discutir por 24h" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">brincadeiras & vida a dois</p>
+                <h3>Taxa para não<br />discutir por 24h</h3>
+                <p class="gift-description">Trégua oficial blindada por lei com sorrisos e concordância em tudo.</p>
+                <div class="gift-footer"><strong>R$ 100,00</strong><button class="text-button gift-button" data-gift="Taxa para não discutir por 24h" data-value="100.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card outline-card" data-category="brincadeiras">
+              <div class="gift-number">48</div>
+              <div class="gift-art gift-photo"><img src="assets/products/voucher-suborno-filme.png" alt="Voucher suborno para escolher o filme" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">brincadeiras & vida a dois</p>
+                <h3>Suborno para<br />escolher o filme</h3>
+                <p class="gift-description">Para não perder 40 minutos rodando o catálogo da Netflix sem decidir nada.</p>
+                <div class="gift-footer"><strong>R$ 100,00</strong><button class="text-button gift-button" data-gift="Suborno para escolher o filme" data-value="100.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card featured" data-category="brincadeiras">
+              <div class="gift-number">49</div>
+              <div class="gift-art gift-photo"><img src="assets/products/voucher-papel-higienico.png" alt="Voucher estoque de papel higiênico" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">brincadeiras & vida a dois</p>
+                <h3>Estoque de papel<br />higiênico</h3>
+                <p class="gift-description">Porque ninguém merece viver a tragédia grega de encontrar o rolo vazio de surpresa.</p>
+                <div class="gift-footer"><strong>R$ 100,00</strong><button class="text-button gift-button" data-gift="Estoque de papel higiênico" data-value="100.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card muted-card" data-category="brincadeiras">
+              <div class="gift-number">50</div>
+              <div class="gift-art gift-photo"><img src="assets/products/voucher-vale-delivery.png" alt="Voucher vale pedir delivery na sexta" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">brincadeiras & vida a dois</p>
+                <h3>Vale pedir delivery<br />na sexta</h3>
+                <p class="gift-description">Pizza grande, hambúrguer ou japa liberados sem precisar sujar uma única panela.</p>
+                <div class="gift-footer"><strong>R$ 150,00</strong><button class="text-button gift-button" data-gift="Vale pedir delivery na sexta" data-value="150.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card dark-card" data-category="brincadeiras">
+              <div class="gift-number">51</div>
+              <div class="gift-art gift-photo"><img src="assets/products/voucher-vale-faxina.png" alt="Voucher vale faxina pesada" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">brincadeiras & vida a dois</p>
+                <h3>Vale faxina<br />pesada</h3>
+                <p class="gift-description">Aquele mutirão especial que deixa o apartamento brilhando e perfumado.</p>
+                <div class="gift-footer"><strong>R$ 150,00</strong><button class="text-button gift-button" data-gift="Vale faxina pesada" data-value="150.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card outline-card" data-category="brincadeiras">
+              <div class="gift-number">52</div>
+              <div class="gift-art gift-photo"><img src="assets/products/voucher-supermercado.png" alt="Voucher 1 mês de compras no mercado" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">brincadeiras & vida a dois</p>
+                <h3>1 mês de compras<br />no mercado</h3>
+                <p class="gift-description">Arroz, feijão, café e guloseimas para abastecer a despensa dos recém-casados.</p>
+                <div class="gift-footer"><strong>R$ 200,00</strong><button class="text-button gift-button" data-gift="1 mês de compras no mercado" data-value="200.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card featured" data-category="brincadeiras">
+              <div class="gift-number">53</div>
+              <div class="gift-art gift-photo"><img src="assets/products/voucher-marido-besteira.png" alt="Voucher fundo o marido fez besteira" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">brincadeiras & vida a dois</p>
+                <h3>Fundo 'O marido<br />fez besteira'</h3>
+                <p class="gift-description">Crédito de emergência em flores, brigadeiros e pedidos sinceros de desculpa.</p>
+                <div class="gift-footer"><strong>R$ 200,00</strong><button class="text-button gift-button" data-gift="Fundo 'O marido fez besteira'" data-value="200.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card muted-card" data-category="brincadeiras">
+              <div class="gift-number">54</div>
+              <div class="gift-art gift-photo"><img src="assets/products/voucher-hoje-ninguem-cozinha.png" alt="Voucher vale hoje ninguém cozinha nada" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">brincadeiras & vida a dois</p>
+                <h3>Vale 'Hoje ninguém<br />cozinha nada'</h3>
+                <p class="gift-description">Direito garantido de comer no sofá assistindo filme com prato no colo.</p>
+                <div class="gift-footer"><strong>R$ 200,00</strong><button class="text-button gift-button" data-gift="Vale 'Hoje ninguém cozinha nada'" data-value="200.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card dark-card" data-category="brincadeiras">
+              <div class="gift-number">55</div>
+              <div class="gift-art gift-photo"><img src="assets/products/voucher-terapia-casal.png" alt="Voucher terapia de casal preventiva" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">brincadeiras & vida a dois</p>
+                <h3>Terapia de casal<br />preventiva</h3>
+                <p class="gift-description">Para aprender a debater a tampa da pasta de dente e toalha na cama com carinho.</p>
+                <div class="gift-footer"><strong>R$ 300,00</strong><button class="text-button gift-button" data-gift="Terapia de casal preventiva" data-value="300.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card outline-card" data-category="metas">
+              <div class="gift-number">56</div>
+              <div class="gift-art gift-photo"><img src="assets/products/fundo-esposa-certa.jpg" alt="Troféu de ouro a esposa tem sempre razão" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">grandes metas & sonhos</p>
+                <h3>Fundo 'A esposa<br />tem sempre razão'</h3>
+                <p class="gift-description">Troféu de ouro oficial: ela nunca erra, apenas tem perspectivas superiores.</p>
+                <div class="gift-footer"><strong>R$ 500,00</strong><button class="text-button gift-button" data-gift="Fundo 'A esposa tem sempre razão'" data-value="500.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card featured" data-category="metas">
+              <div class="gift-number">57</div>
+              <div class="gift-art gift-photo"><img src="assets/products/sofa.png" alt="Sofá confortável para a sala" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">grandes metas & sonhos</p>
+                <h3>Sofá retrátil<br />dos sonhos</h3>
+                <p class="gift-description">Aquele sofá gigante e macio que te engole gostoso nas tardes de domingo.</p>
+                <div class="gift-footer"><strong>R$ 1.000,00</strong><button class="text-button gift-button" data-gift="Sofá retrátil dos sonhos" data-value="1000.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card muted-card" data-category="metas">
+              <div class="gift-number">58</div>
+              <div class="gift-art gift-photo"><img src="assets/products/cozinha.png" alt="Cozinha planejada moderna" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">grandes metas & sonhos</p>
+                <h3>Reforma da<br />cozinha planejada</h3>
+                <p class="gift-description">Bancada bonita, armários dos sonhos e espaço perfeito para cozinhar a dois.</p>
+                <div class="gift-footer"><strong>R$ 2.000,00</strong><button class="text-button gift-button" data-gift="Reforma da cozinha planejada" data-value="2000.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card dark-card" data-category="metas">
+              <div class="gift-number">59</div>
+              <div class="gift-art gift-photo"><img src="assets/products/quarto.png" alt="Patrocínio da vida de casados" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">grandes metas & sonhos</p>
+                <h3>Patrocínio oficial<br />vida de casados</h3>
+                <p class="gift-description">Para se tornar padrinho/madrinha investidor(a) anjo oficial desta união.</p>
+                <div class="gift-footer"><strong>R$ 1.000,00</strong><button class="text-button gift-button" data-gift="Patrocínio oficial vida de casados" data-value="1000.00">escolher <span aria-hidden="true">↗</span></button></div>
+              </div>
+            </article>
+
+            <article class="gift-card outline-card" data-category="metas">
+              <div class="gift-number">60</div>
+              <div class="gift-art gift-photo"><img src="assets/products/casa-propria.jpg" alt="Maquete de casa com chave dourada" loading="lazy" /></div>
+              <div class="gift-content">
+                <p class="gift-category">grandes metas & sonhos</p>
+                <h3>A tão sonhada<br />casa própria</h3>
+                <p class="gift-description">A grande meta master: nosso teto, nosso chão e a chave de ouro da nossa história.</p>
+                <div class="gift-footer"><strong>R$ 5.000,00</strong><button class="text-button gift-button" data-gift="A tão sonhada casa própria" data-value="5000.00">escolher <span aria-hidden="true">↗</span></button></div>
               </div>
             </article>
           </div>
