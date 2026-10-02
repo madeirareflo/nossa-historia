@@ -4,7 +4,7 @@ const WEDDING_CONFIG = {
   weddingDate: "2027-03-13T00:00:00-03:00",
   pixKey: "e7d77842-81c8-4d3b-9673-6a942f9925c5",
   recipient: "DAVI LEITE RIBEIRO DANTAS",
-  // Mantenha os nomes do maior para o menor valor. Os valores não ficam públicos no site.
+  pixCity: "SAO PAULO",
   ranking: [],
 };
 
@@ -12,6 +12,60 @@ const formatBRL = (value) => new Intl.NumberFormat("pt-BR", {
   style: "currency",
   currency: "BRL",
 }).format(Number(value));
+
+
+const normalizePixText = (value, maxLength) => String(value || "")
+  .normalize("NFD")
+  .replace(/[\u0300-\u036f]/g, "")
+  .replace(/[^A-Za-z0-9 .-]/g, "")
+  .toUpperCase()
+  .trim()
+  .slice(0, maxLength);
+
+const emvField = (id, value) => {
+  const text = String(value);
+  return `${id}${String(text.length).padStart(2, "0")}${text}`;
+};
+
+const crc16ccitt = (payload) => {
+  let crc = 0xFFFF;
+  for (let i = 0; i < payload.length; i += 1) {
+    crc ^= payload.charCodeAt(i) << 8;
+    for (let bit = 0; bit < 8; bit += 1) {
+      crc = (crc & 0x8000) ? ((crc << 1) ^ 0x1021) : (crc << 1);
+      crc &= 0xFFFF;
+    }
+  }
+  return crc.toString(16).toUpperCase().padStart(4, "0");
+};
+
+const buildPixPayload = ({ value, txid, description }) => {
+  const merchantAccount =
+    emvField("00", "BR.GOV.BCB.PIX") +
+    emvField("01", WEDDING_CONFIG.pixKey) +
+    emvField("02", normalizePixText(description, 50));
+
+  const additionalData = emvField("05", normalizePixText(txid, 25) || "***");
+
+  let payload =
+    emvField("00", "01") +
+    emvField("26", merchantAccount) +
+    emvField("52", "0000") +
+    emvField("53", "986");
+
+  if (Number(value) > 0) {
+    payload += emvField("54", Number(value).toFixed(2));
+  }
+
+  payload +=
+    emvField("58", "BR") +
+    emvField("59", normalizePixText(WEDDING_CONFIG.recipient, 25)) +
+    emvField("60", normalizePixText(WEDDING_CONFIG.pixCity, 15)) +
+    emvField("62", additionalData) +
+    "6304";
+
+  return payload + crc16ccitt(payload);
+};
 
 const showToast = (message) => {
   const toast = document.querySelector("#toast");
@@ -210,10 +264,13 @@ loadMoreButton.addEventListener("click", () => {
 });
 renderGiftGrid();
 
-// Escolha de presente: deixa claro que o site apenas orienta o Pix.
+// Escolha de presente + Pix Copia e Cola individual por item.
 const dialog = document.querySelector("#gift-dialog");
 const dialogTitle = document.querySelector("#dialog-title");
 const dialogValue = document.querySelector("#dialog-value");
+const pixQrCanvas = document.querySelector("#pix-qr");
+const pixCopyCode = document.querySelector("#pix-copy-code");
+const copyPixCodeButton = document.querySelector("#copy-pix-code");
 const selectedGiftSummary = document.querySelector("#selected-gift-summary");
 const selectedGiftName = document.querySelector("#selected-gift-name");
 const selectedGiftValue = document.querySelector("#selected-gift-value");
@@ -229,6 +286,32 @@ const renderSelectedGift = () => {
   selectedGiftSummary.hidden = false;
 };
 
+const renderGiftPix = async () => {
+  if (!selectedGift) return;
+
+  const payload = buildPixPayload({
+    value: selectedGift.value,
+    txid: selectedGift.txid,
+    description: selectedGift.name,
+  });
+
+  selectedGift.pixPayload = payload;
+  pixCopyCode.value = payload;
+
+  if (window.QRCode && typeof window.QRCode.toCanvas === "function") {
+    try {
+      await window.QRCode.toCanvas(pixQrCanvas, payload, {
+        width: 220,
+        margin: 1,
+        errorCorrectionLevel: "M",
+      });
+    } catch {
+      const ctx = pixQrCanvas.getContext("2d");
+      ctx.clearRect(0, 0, pixQrCanvas.width, pixQrCanvas.height);
+    }
+  }
+};
+
 try {
   const saved = window.sessionStorage.getItem("selectedWeddingGift");
   if (saved) {
@@ -236,39 +319,66 @@ try {
     renderSelectedGift();
   }
 } catch {
-  // A seleção continua funcionando mesmo se o armazenamento do navegador estiver indisponível.
+  // O fluxo continua funcionando mesmo se o armazenamento estiver indisponível.
 }
 
-document.querySelectorAll(".gift-button").forEach((button) => {
-  button.addEventListener("click", () => {
+document.querySelectorAll(".gift-button").forEach((button, index) => {
+  button.addEventListener("click", async () => {
     selectedGift = {
       name: button.dataset.gift,
       value: Number(button.dataset.value || 0),
+      txid: `LARADAVI${String(index + 1).padStart(2, "0")}`,
     };
+
     dialogTitle.textContent = selectedGift.name;
     dialogValue.textContent = selectedGift.value > 0 ? formatBRL(selectedGift.value) : "valor livre";
+
+    try {
+      window.sessionStorage.setItem("selectedWeddingGift", JSON.stringify(selectedGift));
+    } catch {}
+
+    renderSelectedGift();
+    await renderGiftPix();
     dialog.showModal();
   });
 });
 
 document.querySelector("#close-dialog").addEventListener("click", () => dialog.close());
+
 dialog.addEventListener("click", (event) => {
   const bounds = dialog.getBoundingClientRect();
-  const clickedOutside = event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom;
+  const clickedOutside =
+    event.clientX < bounds.left ||
+    event.clientX > bounds.right ||
+    event.clientY < bounds.top ||
+    event.clientY > bounds.bottom;
+
   if (clickedOutside) dialog.close();
 });
 
+copyPixCodeButton.addEventListener("click", () => {
+  if (!selectedGift?.pixPayload) return;
+  copyText(selectedGift.pixPayload, "Pix Copia e Cola copiado.");
+});
+
 document.querySelector("#go-to-pix").addEventListener("click", () => {
-  if (selectedGift) {
-    try { window.sessionStorage.setItem("selectedWeddingGift", JSON.stringify(selectedGift)); } catch {}
-    renderSelectedGift();
-  }
+  renderSelectedGift();
   dialog.close();
   document.querySelector("#pix").scrollIntoView({ behavior: "smooth" });
   window.setTimeout(() => document.querySelector("#copy-key").focus(), 550);
 });
 
 document.querySelector("#copy-key").addEventListener("click", () => {
+  if (selectedGift) {
+    const payload = selectedGift.pixPayload || buildPixPayload({
+      value: selectedGift.value,
+      txid: selectedGift.txid || "LARADAVI",
+      description: selectedGift.name,
+    });
+    copyText(payload, "Pix Copia e Cola copiado.");
+    return;
+  }
+
   copyText(WEDDING_CONFIG.pixKey, "Chave Pix copiada.");
 });
 
