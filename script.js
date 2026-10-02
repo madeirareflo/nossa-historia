@@ -97,6 +97,13 @@ window.setInterval(updateCountdown, 1000);
 const RSVP_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbziS25WSH1YvYpHedyUu57h17m7ZIFD0Z-4N7nhNZ7LoUA_TMFjbKTi_-bfJbunN-Hseg/exec";
 const rankingList = document.querySelector("#ranking-list");
 
+const formatPersonName = (value) => String(value || "")
+  .trim()
+  .toLocaleLowerCase("pt-BR")
+  .replace(/(^|[\s'-])([\p{L}])/gu, (match, separator, letter) =>
+    separator + letter.toLocaleUpperCase("pt-BR")
+  );
+
 const renderMuralNames = (entries) => {
   rankingList.innerHTML = "";
 
@@ -113,7 +120,7 @@ const renderMuralNames = (entries) => {
     mark.className = "ranking-position";
     mark.textContent = "✳";
     name.className = "ranking-name";
-    name.textContent = entry;
+    name.textContent = formatPersonName(entry);
     row.append(mark, name);
     rankingList.appendChild(row);
   });
