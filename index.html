@@ -773,7 +773,7 @@
 <div class="dialog-gift-value"><span>valor do presente</span><strong id="dialog-value">R$ 150,00</strong></div>
 <div class="pix-ready">
   <div class="pix-qr-wrap">
-    <canvas id="pix-qr" width="220" height="220" aria-label="QR Code Pix do presente"></canvas>
+    <div id="pix-qr" class="pix-qr" role="img" aria-label="QR Code Pix do presente"></div>
   </div>
   <label class="pix-copy-label" for="pix-copy-code">Pix Copia e Cola</label>
   <textarea id="pix-copy-code" class="pix-copy-code" readonly rows="3"></textarea>
@@ -783,7 +783,7 @@
 <p class="dialog-footnote">Antes de pagar, confira no seu banco o destinatário <strong>DAVI LEITE RIBEIRO DANTAS</strong> e o valor exibido.</p>
 </dialog>
 <div aria-live="polite" class="toast" id="toast" role="status">Chave Pix copiada.</div>
-<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
