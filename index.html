@@ -718,6 +718,7 @@
 <small>A meta em reais fica só com a gente — aqui compartilhamos apenas o caminho percorrido. ✨</small>
 </div>
 </div>
+</section>
 <section class="ranking-section" id="ranking">
 <div class="section-shell">
 <div class="section-heading ranking-heading">
@@ -741,26 +742,26 @@
 </div>
 <div class="steps">
 <div class="step"><span>01</span><div><h3>Escolha um presente</h3><p>Encontre uma opção que combine com você e com a nossa história.</p></div></div>
-<div class="step"><span>02</span><div><h3>Gere o Pix</h3><p>O valor do presente já vai preenchido em uma cobrança Pix segura pelo Mercado Pago.</p></div></div>
-<div class="step"><span>03</span><div><h3>Pronto</h3><p>Depois do pagamento, a confirmação é acompanhada automaticamente pela nossa lista.</p></div></div>
+<div class="step"><span>02</span><div><h3>Use o Pix pronto</h3><p>O QR Code e o Pix Copia e Cola já vêm com o valor exato do presente preenchido.</p></div></div>
+<div class="step"><span>03</span><div><h3>Confirme no seu banco</h3><p>Antes de pagar, confira o destinatário e o valor. O pagamento vai direto para a nossa chave Pix.</p></div></div>
 </div>
 </section>
 <section class="pix-section" id="pix">
 <div class="pix-panel section-shell">
 <div class="pix-heading">
 <div aria-hidden="true" class="pix-symbol">PIX</div>
-<div><p class="eyebrow light">Pagamento seguro e identificado</p><h2>Seu presente<br/><em>chega por Pix.</em></h2></div>
+<div><p class="eyebrow light">Pagamento direto e sem intermediários</p><h2>Seu presente<br/><em>chega por Pix.</em></h2></div>
 </div>
 <div class="pix-details">
-<p>Ao escolher um presente, você gera uma cobrança Pix pelo Mercado Pago com o valor já preenchido. Assim conseguimos identificar o presente e acompanhar a confirmação do pagamento.</p>
+<p>Ao escolher um presente, geramos um QR Code e um Pix Copia e Cola diretamente para nossa chave, já com o valor do presente preenchido.</p>
 <div class="selected-gift-summary" hidden="" id="selected-gift-summary">
 <span>você escolheu</span>
 <strong id="selected-gift-name"></strong>
 <small id="selected-gift-value"></small>
-<button class="summary-copy" id="pay-selected-gift" type="button">gerar Pix deste presente</button>
+<button class="summary-copy" id="pay-selected-gift" type="button">ver Pix deste presente</button>
 </div>
 <div class="recipient-row"><span>destinatário</span><strong id="pix-recipient">DAVI LEITE RIBEIRO DANTAS</strong></div>
-<div class="pix-warning"><span aria-hidden="true">!</span><p>Antes de confirmar o pagamento no banco, confira o destinatário e o valor da cobrança.</p></div>
+<div class="pix-warning"><span aria-hidden="true">!</span><p>Antes de confirmar no banco, confira o destinatário e o valor. O Pix vai direto para nossa chave, sem taxa de intermediário.</p></div>
 </div>
 </div>
 </section>
@@ -775,12 +776,21 @@
 <button aria-label="Fechar" class="close-dialog" id="close-dialog" type="button">×</button>
 <p class="eyebrow">seu presente escolhido</p>
 <h2 id="dialog-title">Primeiro café na casa nova</h2>
-<p class="dialog-intro">O valor deste presente será enviado para uma cobrança Pix segura pelo Mercado Pago. Na próxima tela, informe seu nome e e-mail para gerar o QR Code.</p>
+<p class="dialog-intro">Seu Pix já está pronto com o valor deste presente. Escaneie o QR Code ou copie o código e cole no seu banco.</p>
 <div class="dialog-gift-value"><span>valor do presente</span><strong id="dialog-value">R$ 150,00</strong></div>
-<div class="dialog-actions"><button class="button button-dark" id="go-to-pix" type="button">Gerar Pix seguro <span aria-hidden="true">↗</span></button></div>
-<p class="dialog-footnote">O pagamento é concluído no seu banco. Antes de pagar, confira o destinatário e o valor.</p>
+<div class="pix-ready">
+  <div class="pix-qr-wrap">
+    <div id="pix-qr" class="pix-qr" role="img" aria-label="QR Code Pix do presente"></div>
+  </div>
+  <label class="pix-copy-label" for="pix-copy-code">Pix Copia e Cola</label>
+  <textarea id="pix-copy-code" class="pix-copy-code" readonly rows="3"></textarea>
+  <button class="button button-dark" id="copy-pix-code" type="button">Copiar Pix pronto <span aria-hidden="true">⧉</span></button>
+  <button class="button button-outline dialog-secondary" id="go-to-pix" type="button">Ver dados do Pix <span aria-hidden="true">↘</span></button>
+</div>
+<p class="dialog-footnote">Antes de pagar, confira no seu banco o destinatário <strong>DAVI LEITE RIBEIRO DANTAS</strong> e o valor exibido.</p>
 </dialog>
 <div aria-live="polite" class="toast" id="toast" role="status">Chave Pix copiada.</div>
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
