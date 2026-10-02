@@ -332,11 +332,26 @@ h2 { margin-bottom: 0; font-size: clamp(39px, 5vw, 70px); }
   background: #fff;
   border: 1px solid var(--line);
 }
-#pix-qr {
-  display: block;
+.pix-qr {
+  display: grid;
+  place-items: center;
   width: 220px;
   height: 220px;
   max-width: 100%;
+}
+.pix-qr img,
+.pix-qr canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+.qr-fallback {
+  margin: 0;
+  padding: 18px;
+  color: var(--ink-soft);
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.5;
 }
 .pix-copy-label {
   display: block;
@@ -369,7 +384,7 @@ h2 { margin-bottom: 0; font-size: clamp(39px, 5vw, 70px); }
     max-height: calc(100vh - 24px);
     overflow-y: auto;
   }
-  #pix-qr {
+  .pix-qr {
     width: 190px;
     height: 190px;
   }
