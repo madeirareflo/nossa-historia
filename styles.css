@@ -255,3 +255,65 @@ h2 { margin-bottom: 0; font-size: clamp(39px, 5vw, 70px); }
   .site-footer { align-items: center; flex-direction: column; gap: 14px; text-align: center; }
   .gift-dialog { padding: 34px 24px 28px; }
 }
+
+
+/* Mural de carinho — cards sem ranking */
+.mural-board {
+  background: transparent;
+}
+.mural-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.mural-card {
+  min-height: 104px;
+  padding: 22px 24px;
+  border: 1px solid var(--line);
+  background: rgba(252, 250, 248, .92);
+}
+.mural-mark {
+  color: var(--ochre);
+  font-size: 27px;
+  line-height: 1;
+}
+.mural-card-content {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.mural-name {
+  display: block;
+  font-size: clamp(19px, 2.1vw, 27px);
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+.mural-companion {
+  color: var(--ink-soft);
+  font-family: var(--serif);
+  font-size: 15px;
+  font-style: italic;
+}
+.mural-board .ranking-note {
+  margin-top: 14px;
+  border: 1px solid var(--line);
+  background: rgba(252, 250, 248, .92);
+}
+@media (max-width: 700px) {
+  .mural-list {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .mural-card {
+    grid-template-columns: 34px 1fr;
+    min-height: 92px;
+    padding: 18px 18px;
+  }
+  .mural-name {
+    font-size: clamp(18px, 5.3vw, 23px);
+  }
+  .mural-companion {
+    font-size: 14px;
+  }
+}
