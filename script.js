@@ -113,15 +113,29 @@ const renderMuralNames = (entries) => {
   }
 
   entries.forEach((entry) => {
-    const row = document.createElement("div");
+    const item = typeof entry === "string" ? { name: entry, companion: "" } : entry;
+    const row = document.createElement("article");
     const mark = document.createElement("span");
-    const name = document.createElement("span");
-    row.className = "ranking-row";
-    mark.className = "ranking-position";
+    const content = document.createElement("div");
+    const name = document.createElement("strong");
+
+    row.className = "ranking-row mural-card";
+    mark.className = "ranking-position mural-mark";
     mark.textContent = "✳";
-    name.className = "ranking-name";
-    name.textContent = formatPersonName(entry);
-    row.append(mark, name);
+    content.className = "mural-card-content";
+    name.className = "ranking-name mural-name";
+    name.textContent = formatPersonName(item.name);
+
+    content.appendChild(name);
+
+    if (item.companion) {
+      const companion = document.createElement("span");
+      companion.className = "mural-companion";
+      companion.textContent = `com ${formatPersonName(item.companion)}`;
+      content.appendChild(companion);
+    }
+
+    row.append(mark, content);
     rankingList.appendChild(row);
   });
 };
