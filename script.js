@@ -93,22 +93,22 @@ const updateCountdown = () => {
 updateCountdown();
 window.setInterval(updateCountdown, 1000);
 
-// Ranking manual — sem expor valores.
+// Mural manual de carinho — sem posições, valores ou competição.
 const rankingList = document.querySelector("#ranking-list");
 const rankingEntries = [...WEDDING_CONFIG.ranking];
 if (rankingEntries.length === 0) {
-  rankingList.innerHTML = `<div class="ranking-empty"><div><strong>O primeiro capítulo ainda está em branco.</strong><p>Quando chegar o primeiro carinho, os nomes vão aparecer aqui — em ordem de muito amor.</p></div></div>`;
+  rankingList.innerHTML = `<div class="ranking-empty"><div><strong>Nosso mural está esperando os primeiros carinhos.</strong><p>Conforme essa história for ganhando novos gestos de afeto, os nomes vão aparecer por aqui.</p></div></div>`;
 } else {
-  rankingEntries.forEach((entry, index) => {
+  rankingEntries.forEach((entry) => {
     const row = document.createElement("div");
-    const position = document.createElement("span");
+    const mark = document.createElement("span");
     const name = document.createElement("span");
     row.className = "ranking-row";
-    position.className = "ranking-position";
-    position.textContent = String(index + 1).padStart(2, "0");
+    mark.className = "ranking-position";
+    mark.textContent = "✳";
     name.className = "ranking-name";
     name.textContent = entry;
-    row.append(position, name);
+    row.append(mark, name);
     rankingList.appendChild(row);
   });
 }
