@@ -5,6 +5,8 @@ const WEDDING_CONFIG = {
   pixKey: "e7d77842-81c8-4d3b-9673-6a942f9925c5",
   recipient: "DAVI LEITE RIBEIRO DANTAS",
   pixCity: "SAO PAULO",
+  paymentWebAppUrl: "https://script.google.com/macros/s/AKfycbz7YvryoMqLvN6Za-tU5U5-WF-9h4H-b7cfDLkclPdJ83qahfTPwozyCvvQz3g6WXTtAA/exec",
+  honeymoonProgressUrl: "https://script.google.com/macros/s/AKfycbz7YvryoMqLvN6Za-tU5U5-WF-9h4H-b7cfDLkclPdJ83qahfTPwozyCvvQz3g6WXTtAA/exec?action=progress",
   ranking: [],
 };
 
@@ -13,59 +15,6 @@ const formatBRL = (value) => new Intl.NumberFormat("pt-BR", {
   currency: "BRL",
 }).format(Number(value));
 
-
-const normalizePixText = (value, maxLength) => String(value || "")
-  .normalize("NFD")
-  .replace(/[\u0300-\u036f]/g, "")
-  .replace(/[^A-Za-z0-9 .-]/g, "")
-  .toUpperCase()
-  .trim()
-  .slice(0, maxLength);
-
-const emvField = (id, value) => {
-  const text = String(value);
-  return `${id}${String(text.length).padStart(2, "0")}${text}`;
-};
-
-const crc16ccitt = (payload) => {
-  let crc = 0xFFFF;
-  for (let i = 0; i < payload.length; i += 1) {
-    crc ^= payload.charCodeAt(i) << 8;
-    for (let bit = 0; bit < 8; bit += 1) {
-      crc = (crc & 0x8000) ? ((crc << 1) ^ 0x1021) : (crc << 1);
-      crc &= 0xFFFF;
-    }
-  }
-  return crc.toString(16).toUpperCase().padStart(4, "0");
-};
-
-const buildPixPayload = ({ value, txid, description }) => {
-  const merchantAccount =
-    emvField("00", "BR.GOV.BCB.PIX") +
-    emvField("01", WEDDING_CONFIG.pixKey) +
-    emvField("02", normalizePixText(description, 50));
-
-  const additionalData = emvField("05", normalizePixText(txid, 25) || "***");
-
-  let payload =
-    emvField("00", "01") +
-    emvField("26", merchantAccount) +
-    emvField("52", "0000") +
-    emvField("53", "986");
-
-  if (Number(value) > 0) {
-    payload += emvField("54", Number(value).toFixed(2));
-  }
-
-  payload +=
-    emvField("58", "BR") +
-    emvField("59", normalizePixText(WEDDING_CONFIG.recipient, 25)) +
-    emvField("60", normalizePixText(WEDDING_CONFIG.pixCity, 15)) +
-    emvField("62", additionalData) +
-    "6304";
-
-  return payload + crc16ccitt(payload);
-};
 
 const showToast = (message) => {
   const toast = document.querySelector("#toast");
@@ -98,10 +47,8 @@ const copyText = async (text, successMessage) => {
   }
 };
 
-// Dados Pix públicos exibidos na página.
-const pixKeyElement = document.querySelector("#pix-key");
+// Dados do destinatário exibidos na página.
 const recipientElements = document.querySelectorAll("#pix-recipient, #alert-recipient");
-pixKeyElement.textContent = WEDDING_CONFIG.pixKey;
 recipientElements.forEach((element) => { element.textContent = WEDDING_CONFIG.recipient; });
 
 // Contagem regressiva com estados para o dia e para depois do casamento.
@@ -264,56 +211,47 @@ loadMoreButton.addEventListener("click", () => {
 });
 renderGiftGrid();
 
-// Escolha de presente + Pix Copia e Cola individual por item.
+// Escolha de presente + Checkout Pix via Mercado Pago.
 const dialog = document.querySelector("#gift-dialog");
 const dialogTitle = document.querySelector("#dialog-title");
 const dialogValue = document.querySelector("#dialog-value");
-const pixQrElement = document.querySelector("#pix-qr");
-const pixCopyCode = document.querySelector("#pix-copy-code");
-const copyPixCodeButton = document.querySelector("#copy-pix-code");
 const selectedGiftSummary = document.querySelector("#selected-gift-summary");
 const selectedGiftName = document.querySelector("#selected-gift-name");
 const selectedGiftValue = document.querySelector("#selected-gift-value");
 let selectedGift = null;
+
+const categoryLabel = (slug) => ({
+  casa: "Casa",
+  viagem: "Lua de Mel",
+  pokemon: "Pokémon & TCG",
+  brincadeiras: "Brincadeiras",
+  metas: "Grandes Metas",
+}[slug] || "Outros");
+
+const buildPaymentUrl = (gift) => {
+  const url = new URL(WEDDING_CONFIG.paymentWebAppUrl);
+  url.searchParams.set("gift", gift.name);
+  url.searchParams.set("category", gift.category);
+  url.searchParams.set("value", String(gift.value));
+  return url.toString();
+};
 
 const renderSelectedGift = () => {
   if (!selectedGift) {
     selectedGiftSummary.hidden = true;
     return;
   }
+
   selectedGiftName.textContent = selectedGift.name;
-  selectedGiftValue.textContent = selectedGift.value > 0 ? formatBRL(selectedGift.value) : "valor livre";
+  selectedGiftValue.textContent = selectedGift.value > 0
+    ? formatBRL(selectedGift.value)
+    : "valor livre";
   selectedGiftSummary.hidden = false;
 };
 
-const renderGiftPix = () => {
+const openSelectedGiftPayment = () => {
   if (!selectedGift) return;
-
-  const payload = buildPixPayload({
-    value: selectedGift.value,
-    txid: selectedGift.txid,
-    description: selectedGift.name,
-  });
-
-  selectedGift.pixPayload = payload;
-  pixCopyCode.value = payload;
-
-  pixQrElement.innerHTML = "";
-
-  try {
-    if (typeof window.QRCode !== "function") {
-      throw new Error("Biblioteca de QR Code indisponível.");
-    }
-
-    new window.QRCode(pixQrElement, {
-      text: payload,
-      width: 220,
-      height: 220,
-      correctLevel: window.QRCode.CorrectLevel.M,
-    });
-  } catch {
-    pixQrElement.innerHTML = '<p class="qr-fallback">Não foi possível gerar o QR Code. Use o botão “Copiar Pix pronto”.</p>';
-  }
+  window.open(buildPaymentUrl(selectedGift), "_blank", "noopener,noreferrer");
 };
 
 try {
@@ -322,27 +260,28 @@ try {
     selectedGift = JSON.parse(saved);
     renderSelectedGift();
   }
-} catch {
-  // O fluxo continua funcionando mesmo se o armazenamento estiver indisponível.
-}
+} catch {}
 
-document.querySelectorAll(".gift-button").forEach((button, index) => {
-  button.addEventListener("click", async () => {
+document.querySelectorAll(".gift-button").forEach((button) => {
+  button.addEventListener("click", () => {
+    const card = button.closest(".gift-card");
+
     selectedGift = {
       name: button.dataset.gift,
       value: Number(button.dataset.value || 0),
-      txid: `LARADAVI${String(index + 1).padStart(2, "0")}`,
+      category: categoryLabel(card?.dataset.category),
     };
 
     dialogTitle.textContent = selectedGift.name;
-    dialogValue.textContent = selectedGift.value > 0 ? formatBRL(selectedGift.value) : "valor livre";
+    dialogValue.textContent = selectedGift.value > 0
+      ? formatBRL(selectedGift.value)
+      : "valor livre";
 
     try {
       window.sessionStorage.setItem("selectedWeddingGift", JSON.stringify(selectedGift));
     } catch {}
 
     renderSelectedGift();
-    renderGiftPix();
     dialog.showModal();
   });
 });
@@ -360,34 +299,69 @@ dialog.addEventListener("click", (event) => {
   if (clickedOutside) dialog.close();
 });
 
-copyPixCodeButton.addEventListener("click", () => {
-  if (!selectedGift?.pixPayload) return;
-  copyText(selectedGift.pixPayload, "Pix Copia e Cola copiado.");
-});
-
 document.querySelector("#go-to-pix").addEventListener("click", () => {
-  renderSelectedGift();
   dialog.close();
-  document.querySelector("#pix").scrollIntoView({ behavior: "smooth" });
-  window.setTimeout(() => document.querySelector("#copy-key").focus(), 550);
+  openSelectedGiftPayment();
 });
 
-document.querySelector("#copy-key").addEventListener("click", () => {
-  if (selectedGift) {
-    const payload = selectedGift.pixPayload || buildPixPayload({
-      value: selectedGift.value,
-      txid: selectedGift.txid || "LARADAVI",
-      description: selectedGift.name,
-    });
-    copyText(payload, "Pix Copia e Cola copiado.");
-    return;
-  }
+document.querySelector("#pay-selected-gift")?.addEventListener("click", openSelectedGiftPayment);
 
-  copyText(WEDDING_CONFIG.pixKey, "Chave Pix copiada.");
-});
-
-document.querySelector("#copy-gift-summary").addEventListener("click", () => {
+document.querySelector("#copy-gift-summary")?.addEventListener("click", () => {
   if (!selectedGift) return;
   const valueText = selectedGift.value > 0 ? formatBRL(selectedGift.value) : "valor livre";
   copyText(`Presente escolhido: ${selectedGift.name} — ${valueText}`, "Identificação do presente copiada.");
+});
+
+// Termômetro da lua de mel.
+// Usa JSONP porque o Apps Script responde em outro domínio.
+const updateHoneymoonProgress = (percent) => {
+  const safe = Math.max(0, Math.min(100, Number(percent) || 0));
+  const percentEl = document.querySelector("#honeymoon-percent");
+  const fillEl = document.querySelector("#honeymoon-fill");
+  const barEl = document.querySelector("#honeymoon-progressbar");
+  const statusEl = document.querySelector("#honeymoon-status");
+
+  if (!percentEl || !fillEl || !barEl) return;
+
+  percentEl.textContent = `${Math.round(safe)}%`;
+  fillEl.style.width = `${safe}%`;
+  barEl.setAttribute("aria-valuenow", String(Math.round(safe)));
+
+  if (statusEl) {
+    statusEl.textContent = safe >= 100
+      ? "Conseguimos! Nosso sonho chegou ao castelo. 🏰✨"
+      : `${Math.round(safe)}% do sonho já realizado. Cada presente nos leva mais perto do castelo.`;
+  }
+};
+
+const loadHoneymoonProgress = () => {
+  const callbackName = `__honeymoonProgress_${Date.now()}`;
+  const script = document.createElement("script");
+  const separator = WEDDING_CONFIG.honeymoonProgressUrl.includes("?") ? "&" : "?";
+
+  window[callbackName] = (data) => {
+    try {
+      if (data?.ok) updateHoneymoonProgress(data.percent);
+    } finally {
+      delete window[callbackName];
+      script.remove();
+    }
+  };
+
+  script.src = `${WEDDING_CONFIG.honeymoonProgressUrl}${separator}callback=${encodeURIComponent(callbackName)}&t=${Date.now()}`;
+  script.onerror = () => {
+    delete window[callbackName];
+    script.remove();
+  };
+
+  document.body.appendChild(script);
+};
+
+loadHoneymoonProgress();
+
+document.querySelector("#honeymoon-gifts-link")?.addEventListener("click", () => {
+  window.setTimeout(() => {
+    const travelFilter = document.querySelector('.filter-btn[data-filter="viagem"]');
+    if (travelFilter) travelFilter.click();
+  }, 350);
 });
