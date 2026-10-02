@@ -711,6 +711,23 @@
 </div>
 </div>
 </section>
+<section class="honeymoon-section" id="lua-de-mel">
+<div class="section-shell honeymoon-shell">
+<div class="honeymoon-copy">
+<p class="eyebrow">Nosso próximo capítulo</p>
+<h2>Rumo à Disney<br/><em>no Halloween.</em> 🎃🏰</h2>
+<p>Nosso sonho é viver a lua de mel na Disney durante a época mais assustadoramente mágica do ano. Cada carinho nos aproxima um pouquinho mais desse capítulo.</p>
+<a class="button button-dark honeymoon-button" href="#presentes" id="honeymoon-gifts-link">Fazer parte desse sonho <span aria-hidden="true">↘</span></a>
+</div>
+<div class="honeymoon-progress-card" aria-live="polite">
+<div class="honeymoon-progress-top"><span>nosso sonho</span><strong id="honeymoon-percent">0%</strong></div>
+<div class="honeymoon-track" role="progressbar" aria-label="Progresso da lua de mel" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="honeymoon-progressbar">
+<div class="honeymoon-fill" id="honeymoon-fill"></div>
+</div>
+<p id="honeymoon-status">Cada presente nos leva um pouquinho mais perto do castelo.</p>
+<small>A meta em reais fica só com a gente — aqui compartilhamos apenas o caminho percorrido. ✨</small>
+</div>
+</div>
 <section class="ranking-section" id="ranking">
 <div class="section-shell">
 <div class="section-heading ranking-heading">
@@ -734,27 +751,26 @@
 </div>
 <div class="steps">
 <div class="step"><span>01</span><div><h3>Escolha um presente</h3><p>Encontre uma opção que combine com você e com a nossa história.</p></div></div>
-<div class="step"><span>02</span><div><h3>Faça o Pix</h3><p>Copie a chave Pix na área de pagamento e confirme no seu banco.</p></div></div>
-<div class="step"><span>03</span><div><h3>Envie seu carinho</h3><p>Se quiser, conte para a gente qual presente você escolheu.</p></div></div>
+<div class="step"><span>02</span><div><h3>Gere o Pix</h3><p>O valor do presente já vai preenchido em uma cobrança Pix segura pelo Mercado Pago.</p></div></div>
+<div class="step"><span>03</span><div><h3>Pronto</h3><p>Depois do pagamento, a confirmação é acompanhada automaticamente pela nossa lista.</p></div></div>
 </div>
 </section>
 <section class="pix-section" id="pix">
 <div class="pix-panel section-shell">
 <div class="pix-heading">
 <div aria-hidden="true" class="pix-symbol">PIX</div>
-<div><p class="eyebrow light">Pagamento seguro e direto</p><h2>Seu presente<br/><em>chega por Pix.</em></h2></div>
+<div><p class="eyebrow light">Pagamento seguro e identificado</p><h2>Seu presente<br/><em>chega por Pix.</em></h2></div>
 </div>
 <div class="pix-details">
-<p>Depois de escolher um presente, use os dados abaixo para concluir a contribuição diretamente no seu banco.</p>
+<p>Ao escolher um presente, você gera uma cobrança Pix pelo Mercado Pago com o valor já preenchido. Assim conseguimos identificar o presente e acompanhar a confirmação do pagamento.</p>
 <div class="selected-gift-summary" hidden="" id="selected-gift-summary">
 <span>você escolheu</span>
 <strong id="selected-gift-name"></strong>
 <small id="selected-gift-value"></small>
-<button class="summary-copy" id="copy-gift-summary" type="button">copiar identificação do presente</button>
+<button class="summary-copy" id="pay-selected-gift" type="button">gerar Pix deste presente</button>
 </div>
 <div class="recipient-row"><span>destinatário</span><strong id="pix-recipient">DAVI LEITE RIBEIRO DANTAS</strong></div>
-<div class="pix-key-box"><span>chave Pix</span><strong id="pix-key">e7d77842-81c8-4d3b-9673-6a942f9925c5</strong><button class="copy-button" id="copy-key" type="button">copiar <span aria-hidden="true">⧉</span></button></div>
-<div class="pix-warning"><span aria-hidden="true">!</span><p>Antes de confirmar, verifique se o nome do destinatário é exatamente o mesmo que aparece acima.</p></div>
+<div class="pix-warning"><span aria-hidden="true">!</span><p>Antes de confirmar o pagamento no banco, confira o destinatário e o valor da cobrança.</p></div>
 </div>
 </div>
 </section>
@@ -769,21 +785,12 @@
 <button aria-label="Fechar" class="close-dialog" id="close-dialog" type="button">×</button>
 <p class="eyebrow">seu presente escolhido</p>
 <h2 id="dialog-title">Primeiro café na casa nova</h2>
-<p class="dialog-intro">Seu Pix já fica pronto com o valor deste presente. Escaneie o QR Code ou copie o código e cole no seu banco.</p>
+<p class="dialog-intro">O valor deste presente será enviado para uma cobrança Pix segura pelo Mercado Pago. Na próxima tela, informe seu nome e e-mail para gerar o QR Code.</p>
 <div class="dialog-gift-value"><span>valor do presente</span><strong id="dialog-value">R$ 150,00</strong></div>
-<div class="pix-ready">
-  <div class="pix-qr-wrap">
-    <div id="pix-qr" class="pix-qr" role="img" aria-label="QR Code Pix do presente"></div>
-  </div>
-  <label class="pix-copy-label" for="pix-copy-code">Pix Copia e Cola</label>
-  <textarea id="pix-copy-code" class="pix-copy-code" readonly rows="3"></textarea>
-  <button class="button button-dark" id="copy-pix-code" type="button">Copiar Pix pronto <span aria-hidden="true">⧉</span></button>
-  <button class="button button-outline dialog-secondary" id="go-to-pix" type="button">Ver dados do Pix <span aria-hidden="true">↘</span></button>
-</div>
-<p class="dialog-footnote">Antes de pagar, confira no seu banco o destinatário <strong>DAVI LEITE RIBEIRO DANTAS</strong> e o valor exibido.</p>
+<div class="dialog-actions"><button class="button button-dark" id="go-to-pix" type="button">Gerar Pix seguro <span aria-hidden="true">↗</span></button></div>
+<p class="dialog-footnote">O pagamento é concluído no seu banco. Antes de pagar, confira o destinatário e o valor.</p>
 </dialog>
 <div aria-live="polite" class="toast" id="toast" role="status">Chave Pix copiada.</div>
-<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
