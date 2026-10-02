@@ -389,3 +389,109 @@ h2 { margin-bottom: 0; font-size: clamp(39px, 5vw, 70px); }
     height: 190px;
   }
 }
+
+
+/* Lua de mel — progresso sem expor a meta em reais */
+.honeymoon-section {
+  padding: 88px 0;
+  background:
+    radial-gradient(circle at 80% 25%, rgba(201, 147, 61, .10), transparent 32%),
+    linear-gradient(180deg, rgba(248,244,239,.96), rgba(243,236,231,.96));
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.honeymoon-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, .85fr);
+  gap: clamp(34px, 7vw, 90px);
+  align-items: center;
+}
+.honeymoon-copy h2 {
+  margin: 8px 0 18px;
+}
+.honeymoon-copy > p:not(.eyebrow) {
+  max-width: 620px;
+  color: var(--ink-soft);
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.6;
+}
+.honeymoon-button {
+  display: inline-flex;
+  margin-top: 22px;
+}
+.honeymoon-progress-card {
+  padding: clamp(26px, 4vw, 44px);
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.78);
+  box-shadow: 0 18px 50px rgba(54,31,36,.07);
+}
+.honeymoon-progress-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.honeymoon-progress-top span {
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  font-size: 9px;
+  font-weight: 700;
+}
+.honeymoon-progress-top strong {
+  color: var(--wine);
+  font-family: var(--serif);
+  font-size: clamp(34px, 5vw, 58px);
+  line-height: .9;
+}
+.honeymoon-track {
+  position: relative;
+  overflow: hidden;
+  height: 18px;
+  border: 1px solid rgba(90,23,38,.22);
+  background: rgba(90,23,38,.08);
+}
+.honeymoon-fill {
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--wine), var(--ochre));
+  transition: width .9s ease;
+}
+.honeymoon-progress-card p {
+  margin: 18px 0 7px;
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.45;
+}
+.honeymoon-progress-card small {
+  display: block;
+  color: var(--ink-soft);
+  font-size: 11px;
+  line-height: 1.5;
+}
+@media (max-width: 760px) {
+  .honeymoon-section {
+    padding: 72px 0;
+  }
+  .honeymoon-shell {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .honeymoon-button {
+    width: 100%;
+    justify-content: center;
+  }
+  .honeymoon-progress-card {
+    padding: 26px 20px;
+  }
+}
+
+/* Checkout Mercado Pago: modal enxuto */
+.gift-dialog .dialog-actions {
+  margin-top: 22px;
+}
+.gift-dialog .dialog-actions .button {
+  width: 100%;
+}
