@@ -268,7 +268,7 @@ renderGiftGrid();
 const dialog = document.querySelector("#gift-dialog");
 const dialogTitle = document.querySelector("#dialog-title");
 const dialogValue = document.querySelector("#dialog-value");
-const pixQrCanvas = document.querySelector("#pix-qr");
+const pixQrElement = document.querySelector("#pix-qr");
 const pixCopyCode = document.querySelector("#pix-copy-code");
 const copyPixCodeButton = document.querySelector("#copy-pix-code");
 const selectedGiftSummary = document.querySelector("#selected-gift-summary");
@@ -286,7 +286,7 @@ const renderSelectedGift = () => {
   selectedGiftSummary.hidden = false;
 };
 
-const renderGiftPix = async () => {
+const renderGiftPix = () => {
   if (!selectedGift) return;
 
   const payload = buildPixPayload({
@@ -298,17 +298,21 @@ const renderGiftPix = async () => {
   selectedGift.pixPayload = payload;
   pixCopyCode.value = payload;
 
-  if (window.QRCode && typeof window.QRCode.toCanvas === "function") {
-    try {
-      await window.QRCode.toCanvas(pixQrCanvas, payload, {
-        width: 220,
-        margin: 1,
-        errorCorrectionLevel: "M",
-      });
-    } catch {
-      const ctx = pixQrCanvas.getContext("2d");
-      ctx.clearRect(0, 0, pixQrCanvas.width, pixQrCanvas.height);
+  pixQrElement.innerHTML = "";
+
+  try {
+    if (typeof window.QRCode !== "function") {
+      throw new Error("Biblioteca de QR Code indisponível.");
     }
+
+    new window.QRCode(pixQrElement, {
+      text: payload,
+      width: 220,
+      height: 220,
+      correctLevel: window.QRCode.CorrectLevel.M,
+    });
+  } catch {
+    pixQrElement.innerHTML = '<p class="qr-fallback">Não foi possível gerar o QR Code. Use o botão “Copiar Pix pronto”.</p>';
   }
 };
 
@@ -338,7 +342,7 @@ document.querySelectorAll(".gift-button").forEach((button, index) => {
     } catch {}
 
     renderSelectedGift();
-    await renderGiftPix();
+    renderGiftPix();
     dialog.showModal();
   });
 });
