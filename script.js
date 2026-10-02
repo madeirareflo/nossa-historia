@@ -97,7 +97,7 @@ window.setInterval(updateCountdown, 1000);
 const rankingList = document.querySelector("#ranking-list");
 const rankingEntries = [...WEDDING_CONFIG.ranking];
 if (rankingEntries.length === 0) {
-  rankingList.innerHTML = `<div class="ranking-empty"><div><strong>O primeiro capítulo ainda está em branco.</strong><p>Quando chegar a primeira contribuição, o nome aparecerá aqui — sempre na ordem do maior valor.</p></div></div>`;
+  rankingList.innerHTML = `<div class="ranking-empty"><div><strong>O primeiro capítulo ainda está em branco.</strong><p>Quando chegar o primeiro carinho, os nomes vão aparecer aqui — em ordem de muito amor.</p></div></div>`;
 } else {
   rankingEntries.forEach((entry, index) => {
     const row = document.createElement("div");
