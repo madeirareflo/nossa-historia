@@ -93,13 +93,19 @@ const updateCountdown = () => {
 updateCountdown();
 window.setInterval(updateCountdown, 1000);
 
-// Mural manual de carinho — sem posições, valores ou competição.
+// Mural de carinho automático — alimentado pelas confirmações do RSVP.
+const RSVP_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbziS25WSH1YvYpHedyUu57h17m7ZIFD0Z-4N7nhNZ7LoUA_TMFjbKTi_-bfJbunN-Hseg/exec";
 const rankingList = document.querySelector("#ranking-list");
-const rankingEntries = [...WEDDING_CONFIG.ranking];
-if (rankingEntries.length === 0) {
-  rankingList.innerHTML = `<div class="ranking-empty"><div><strong>Nosso mural está esperando os primeiros carinhos.</strong><p>Conforme essa história for ganhando novos gestos de afeto, os nomes vão aparecer por aqui.</p></div></div>`;
-} else {
-  rankingEntries.forEach((entry) => {
+
+const renderMuralNames = (entries) => {
+  rankingList.innerHTML = "";
+
+  if (!entries.length) {
+    rankingList.innerHTML = `<div class="ranking-empty"><div><strong>Nosso mural está esperando os primeiros carinhos.</strong><p>Quando chegarem as primeiras confirmações pelo site, os nomes vão aparecer por aqui.</p></div></div>`;
+    return;
+  }
+
+  entries.forEach((entry) => {
     const row = document.createElement("div");
     const mark = document.createElement("span");
     const name = document.createElement("span");
@@ -111,7 +117,23 @@ if (rankingEntries.length === 0) {
     row.append(mark, name);
     rankingList.appendChild(row);
   });
-}
+};
+
+rankingList.innerHTML = `<div class="ranking-empty"><div><strong>Carregando os carinhos...</strong><p>Estamos atualizando o mural com as confirmações recebidas.</p></div></div>`;
+
+fetch(`${RSVP_WEBAPP_URL}?action=mural&t=${Date.now()}`, { cache: "no-store" })
+  .then((response) => {
+    if (!response.ok) throw new Error("Falha ao carregar o mural.");
+    return response.json();
+  })
+  .then((payload) => {
+    if (!payload || payload.ok !== true || !Array.isArray(payload.names)) {
+      renderMuralNames([]);
+      return;
+    }
+    renderMuralNames(payload.names);
+  })
+  .catch(() => renderMuralNames([]));
 
 // Filtros + carregamento progressivo para evitar uma página gigante no celular.
 const filterButtons = [...document.querySelectorAll(".filter-btn")];
