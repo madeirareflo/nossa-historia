@@ -397,7 +397,10 @@ document.querySelector("#pay-selected-gift")?.addEventListener("click", openSele
 // Termômetro da lua de mel.
 // Usa JSONP porque o Apps Script responde em outro domínio.
 const updateHoneymoonProgress = (percent) => {
-  const safe = Math.max(0, Math.min(100, Number(percent) || 0));
+  const realPercent = Math.max(0, Math.min(100, Number(percent) || 0));
+  const symbolicStart = 10;
+  const displayPercent = realPercent < symbolicStart ? symbolicStart : realPercent;
+
   const percentEl = document.querySelector("#honeymoon-percent");
   const fillEl = document.querySelector("#honeymoon-fill");
   const barEl = document.querySelector("#honeymoon-progressbar");
@@ -405,14 +408,19 @@ const updateHoneymoonProgress = (percent) => {
 
   if (!percentEl || !fillEl || !barEl) return;
 
-  percentEl.textContent = `${Math.round(safe)}%`;
-  fillEl.style.width = `${safe}%`;
-  barEl.setAttribute("aria-valuenow", String(Math.round(safe)));
+  percentEl.textContent = `${Math.round(displayPercent)}%`;
+  fillEl.style.width = `${displayPercent}%`;
+  barEl.setAttribute("aria-valuenow", String(Math.round(displayPercent)));
+  barEl.dataset.realPercent = String(Math.round(realPercent));
 
   if (statusEl) {
-    statusEl.textContent = safe >= 100
-      ? "Conseguimos! Nosso sonho chegou ao castelo. 🏰✨"
-      : `${Math.round(safe)}% do sonho já realizado. Cada presente nos leva mais perto do castelo.`;
+    if (realPercent >= 100) {
+      statusEl.textContent = "Conseguimos! Nosso sonho chegou ao castelo. 🏰✨";
+    } else if (realPercent < symbolicStart) {
+      statusEl.textContent = "Nosso sonho já começou — 10% rumo ao castelo. Este é o nosso marco simbólico de partida. ✨";
+    } else {
+      statusEl.textContent = `${Math.round(realPercent)}% do sonho já realizado. Cada presente nos leva mais perto do castelo.`;
+    }
   }
 };
 
